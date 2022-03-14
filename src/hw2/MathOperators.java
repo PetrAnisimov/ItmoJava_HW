@@ -2,8 +2,9 @@ package hw2;
 
 public class MathOperators {
     public static void main(String[] args) {
-        int num1 = 22, num2 = 4;
-        int operator = 3;
+        double num1 = 7, num2 = 0;
+        int operator = 9;
+        // Добавить обработку Infinity g при делении
 
         switch (operator) {
             case 3:

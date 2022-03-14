@@ -6,7 +6,7 @@ public class AgeBooling {
 
         if (age >= 100) {
             System.out.println("Мы вам перезвоним");
-        } else if (exp <= 5) {
+        } else if (exp < 5) {
             System.out.println("Вы подходите на должность стажера");
         } else if (exp >= 5) {
             System.out.println("Вы подходите на должность разработчика");
