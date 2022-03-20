@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class NewArrayForИegativeInts {
     public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 11, 13, 15, 14, 16};
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 11, 13, 15, 14, 16, 17, 18};
         Arrays.sort(array);
         int x = 0, y = 0;
         System.out.println("Ваш массив: " + Arrays.toString(array));
