@@ -3,7 +3,7 @@ package ru.itmo.lessons.lesson14;
 import java.util.*;
 
 
-public class Employee implements Comparable{
+public class Employee implements Comparable<Employee> {
     private String name;
     private String company;
     private int salary;
@@ -49,7 +49,6 @@ public class Employee implements Comparable{
     }
 
 
-
     @Override
     public String toString() {
         return "Employee{" +
@@ -74,25 +73,34 @@ public class Employee implements Comparable{
             double randomIndexForArray = (int) (2 + Math.random() * 5);
             double randomIndexForAge = (int) (20 + Math.random() * 40);
             double randomSalary = (int) (1101 + Math.random() * 133);
-            employees.add(new Employee(names[(int) randomIndexForArray], companies[(int) randomIndexForArray], (int) randomIndexForAge, (int) randomSalary));
+            employees.add(new Employee(names[(int) randomIndexForArray],
+                    companies[(int) randomIndexForArray],
+                    (int) randomIndexForAge, (int) randomSalary));
 
         }
+        //
         Collections.sort(employees);
+
         for (Employee employee : employees) {
-            System.out.println("Зарплата: " +  employee.salary);
-            System.out.println("Компания: " +  employee.company);
-            System.out.println("Имя: " +  employee.name);
-            System.out.println("Возраст: "+ employee.age);
+            System.out.println("Зарплата: " + employee.salary);
+            System.out.println("Компания: " + employee.company);
+            System.out.println("Имя: " + employee.name);
+            System.out.println("Возраст: " + employee.age);
         }
 
         return employees;
 
     }
 
+//    @Override
+//    public int compareTo(Employee o) {
+//        return 0;
+//    }
+
+
     @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
+    public int compareTo(Employee o) {
+        return this.salary - o.salary;
 
 
 // Создать список объектов List<Employee> (использовать метод employeeGenerator)
@@ -101,7 +109,18 @@ public class Employee implements Comparable{
 // имени и зарплате
 // имени, зарплате, возрасту и компании
 
+    }
+}
+class AgeComparator implements Comparator<Employee>{
+    @Override
+    public int compare(Employee o1, Employee o2) {
+        return Integer.compare(o1.getAge(),o2.getAge());
+    }
 }
 
-
-
+class SalaryComparator implements Comparator<Employee>{
+    @Override
+    public int compare(Employee o1, Employee o2) {
+        return o1.getName().compareTo(o2.getName());
+    }
+}
