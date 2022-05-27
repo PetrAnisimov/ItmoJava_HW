@@ -1,29 +1,41 @@
 package ru.itmo.lessons.courseworks.game2.logic;
 
-import java.util.HashMap;
+
+import ru.itmo.lessons.courseworks.game2.menu.LogicMenu;
 
 public class DecoderScenes {
-    Scenes scenes = new Scenes();
     Steps steps = new Steps();
-    LogicGame logicGame = new LogicGame();
+    Scenes scenes = new Scenes();
+    LogicMenu logicMenu = new LogicMenu();
+
+
+    public void startNextScene(String scene,String code){
+        System.out.println(scene);
+        LogicGame logicGame = new LogicGame();
+        logicGame.chuseAnswear(code);
+
+    }
+
 
     public String nextFirstScene(String code) {
-        System.out.println(scenesForFirstСhoice.get(code));
+        if (code.equals(scenes.firstSceneCode)) {
+            System.out.println(steps.scenesForFirstСhoice.get(code));
+            logicMenu.firstMenu();
+            logicMenu.commandForFirstMenu();
+        }
+
+        else System.out.println(steps.scenesForFirstСhoice.get(code));
+        LogicGame logicGame = new LogicGame();
+        logicGame.chuseAnswear(code);
 
         return code;
     }
+
     public String nextSecondScene(String code) {
-        System.out.println(scenesForSecondСhoice.get(code));
+        startNextScene(steps.scenesForSecondСhoice.get(code),code);
+
         return code;
     }
 
-    HashMap<String, String> scenesForFirstСhoice = new HashMap<>() {{
-        put("firstSceneCode", scenes.finalSceneScene);
-    }};
-
-    HashMap<String, String> scenesForSecondСhoice = new HashMap<>() {{
-        put("firstSceneCode", scenes.goToSearchScene);
-
-    }};
 
 }

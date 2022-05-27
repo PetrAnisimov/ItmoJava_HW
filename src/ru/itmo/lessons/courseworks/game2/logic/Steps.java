@@ -1,11 +1,21 @@
 package ru.itmo.lessons.courseworks.game2.logic;
 
-public class Steps {
-    LogicGame logicGame = new LogicGame();
+import java.util.HashMap;
+import java.util.Map;
 
-    public String showScene(String scene) {
-        System.out.println(scene);
-        //logicGame.chuseAnswear(code);
-        return scene;
-    }
+public class Steps {
+    static Scenes scenes = new Scenes();
+
+
+    HashMap<String, String> scenesForFirstСhoice = new HashMap<>() {{
+        put(scenes.firstSceneCode, scenes.finalSceneScene);
+        put(scenes.askAboutSquirrelToDwellersCode, scenes.askAboutSquirrelToDwellersScene);
+    }};
+
+    HashMap<String, String> scenesForSecondСhoice = new HashMap<>() {{
+        put(scenes.firstSceneCode, scenes.goToSearchScene);
+        put(scenes.finalScene2Code, scenes.finalScene2Scene);
+    }};
+
 }
+

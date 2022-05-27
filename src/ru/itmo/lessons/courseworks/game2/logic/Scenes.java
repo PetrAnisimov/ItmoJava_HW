@@ -1,8 +1,12 @@
 package ru.itmo.lessons.courseworks.game2.logic;
 
-public class Scenes {
+import ru.itmo.lessons.courseworks.game2.menu.LogicMenu;
 
-    public String firstSceneCode;
+public class Scenes {
+    LogicMenu logicMenu = new LogicMenu();
+
+
+    public String firstSceneCode = "firstSceneCode";
     public String firstSceneAction = """
             Каждое утро Лисёнок просыпался, завтракал и
             шёл увидеться с Бельчонком. Это утро не было
@@ -31,6 +35,21 @@ public class Scenes {
             3) Меню
             """;
 
+    public String askAboutSquirrelToDwellersCode;
+    public String askAboutSquirrelToDwellersScene = """
+            Пока Лисёнок принимал решение, лесные жители разошлись
+            кто куда. Остались только Сова и Волк. Но у Совы бывают
+            проблемы с памятью, а Волк может сильно разозлиться из-за
+            расспросов. Кого выбрать?
+                        
+            Выбери ответ
+            1) Расспросить Сову
+            2) Расспросить Волка
+            3) Меню
+            """;
+
+
+
     public String finalSceneCode;
     public String finalSceneScene = """
             Вернувшись домой, Лисёнок нашёл там Бельчонка.
@@ -38,7 +57,17 @@ public class Scenes {
             раньше и увидел там рой злобных пчел. Он поспешил
             предупредить об этом Лисёнка, но они разминулись.
             Наконец-то друзья нашли друг друга! 
-            Игра завершилась успехом 
+                        
+            ====> Игра завершилась успехом <==== 
+            """;
+
+    public String finalScene2Code;
+    public String finalScene2Scene = """
+            Лисёнок слишком долго плутал по лесу в поисках друга
+            и сам не заметил, как заблудился. Теперь его самого нужно искать.
+            Игра завершилась неудачей
+            
+            ====> Игра завершилась успехом <==== 
             """;
 
 

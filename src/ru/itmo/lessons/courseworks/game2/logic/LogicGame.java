@@ -9,6 +9,11 @@ public class LogicGame {
     LogicMenu logicMenu = new LogicMenu();
     DecoderScenes decoderScenes = new DecoderScenes();
 
+    public void showScene(String scene, String code){
+        System.out.println(scene);
+        chuseAnswear(code);
+    }
+
     public void firstStep(String code) {
         decoderScenes.nextFirstScene(code);
     }

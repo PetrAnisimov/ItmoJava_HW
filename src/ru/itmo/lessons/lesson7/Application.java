@@ -8,7 +8,7 @@ public class Application {
         Pupil pupil = new Pupil("Petr", 13, lessons, 12);
         Teacher teacher = new Teacher("Pavel", 31, 10);
         Director director = new Director("Alex", 56);
-        School school= new School(lessons,"107",director,teacher,pupil);
+   //     School school= new School(lessons,"107",director,teacher,pupil);
 
 
     }
