@@ -7,14 +7,20 @@ import java.util.Scanner;
 public class LogicGame {
     Scanner scanner = new Scanner(System.in);
     LogicMenu logicMenu = new LogicMenu();
-    DecoderScenes decoderScenes = new DecoderScenes();
 
-    public void firstStep(String code) {
-        decoderScenes.nextFirstScene(code);
+    public void showScene(String sceneScene, String sceneCode) {
+        System.out.println(sceneScene);
+        chuseAnswear(sceneCode);
     }
+//    public String showScene(String sceneScene, String sceneCode) {
+//        System.out.println(sceneScene);
+//        chuseAnswear(sceneCode);
+//        return sceneScene;
+//    }
 
-    public void secondStep(String code) {
-        decoderScenes.nextSecondScene(code);
+    public String showText(String sceneScene) {
+        System.out.println(sceneScene);
+        return sceneScene;
     }
 
     public boolean checkValueFromAnsewr(int num) {
@@ -25,12 +31,22 @@ public class LogicGame {
         return true;
     }
 
-    public void chuseAnswear(String code) {
+
+    public void chuseAnswear(String sceneCode) {
         int num = scanner.nextInt();
         if (checkValueFromAnsewr(num)) {
             switch (num) {
-                case 1 -> firstStep(code);
-                case 2 -> secondStep(code);
+                case 1 -> {
+                    var first = Scenes.getScenesByCode(sceneCode).getFirst();
+                    showScene(first.getSceneScene(), first.getSceneCode());
+                }
+
+                case 2 -> {
+                    var second = Scenes.getScenesByCode(sceneCode).getSecond();
+                    showScene(second.getSceneScene(),second.getSceneCode());
+                }
+
+
                 case 3 -> logicMenu.secondMenu();
 
             }

@@ -1,18 +1,15 @@
 package ru.itmo.lessons.courseworks.game2.menu;
 
 
-import ru.itmo.lessons.courseworks.game.menu.commandsMenu.LoadGame;
 import ru.itmo.lessons.courseworks.game2.logic.LogicGame;
 import ru.itmo.lessons.courseworks.game2.logic.Scenes;
-import ru.itmo.lessons.courseworks.game2.logic.Steps;
 
 public class JobMenu {
-    Steps steps = new Steps();
-    Scenes scenes = new Scenes();
+    LogicGame logicGame = new LogicGame();
+    Scenes firstScene = Scenes.getScenesByCode("firstSceneCode");
 
     public void startGame() {
-       steps.showScene(scenes.firstSceneAction);
-
+        logicGame.showScene(firstScene.getSceneScene(), firstScene.getSceneCode());
     }
 
     public void saveGame() {
