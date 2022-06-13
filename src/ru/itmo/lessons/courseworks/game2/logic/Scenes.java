@@ -1,6 +1,10 @@
 package ru.itmo.lessons.courseworks.game2.logic;
 
+
 import java.util.HashMap;
+
+import ru.itmo.lessons.courseworks.game2.menu.LogicMenu;
+
 
 public class Scenes {
 
@@ -87,14 +91,14 @@ public class Scenes {
                 Наконец-то друзья нашли друг друга! 
                             
                 ====> Игра завершилась успехом <==== 
-                3) Меню   
+                Нажмите цифру 3 для выхода в меню
                 """);
         Scenes finalScene2Scene = new Scenes("finalScene2Scene", """
                 Лисёнок слишком долго плутал по лесу в поисках друга
                 и сам не заметил, как заблудился. Теперь его самого нужно искать.
                             
                 ====> Игра завершилась неудачей <==== 
-                3) Меню   
+                Нажмите цифру 3 для выхода в меню
                 """);
         Scenes askOwlAboutSquirrel = new Scenes("askOwlAboutSquirrel", """
                 Сова долго не хотела говорить, но в итоге сказала, что видела 
@@ -144,12 +148,28 @@ public class Scenes {
                 2) Скорее отнести мёд Медвежонку
                 3) Меню
                 """);
+        Scenes eatAndRest = new Scenes("eatAndRestCode", """
+                Пока Лисёнок ел, злобные пчёлы вернулись и покусали его. Лисёнку нужна помощь,
+                 он не сможет продолжить поиски. Игра завершилась неудачей
+                 
+                 ====> Игра завершилась неудачей <==== 
+                Нажмите цифру 3 для выхода в меню
+                """);
+        Scenes  bringHoneyToBear = new Scenes("bringHoneyToBearCode", """
+                Довольный Медвежонок рассказал Лисёнку, что очень хорошо знает семью Белок и уверен,
+                 что Бельчонок никогда не пошёл бы в глубь леса. Он заверял Лисёнка, что Белки не попадают в
+                  неприятности, и что Совам нельзя верить, он также уговаривал Лисёнка вернуться домой.
+                 
+                 Выбери ответ
+                1) Медвежонок ничего не знает, нужно продолжить поиски
+                2) Может быть он прав и Лисёнок просто паникует
+                """);
         Scenes finalScene3Scene = new Scenes("finalScene3Scene", """
                 Это была не лучшая идея. Пчёлы покусали Лисёнка,
                 теперь ему самому нужна помощь.
                 
                 ====> Игра завершилась неудачей <====
-                3) Меню                     
+                Нажмите цифру 3 для выхода в меню                 
                 """);
 
 
@@ -175,22 +195,29 @@ public class Scenes {
         getHoney.setFirst(waitBeforeBeesGoOut);
         getHoney.setSecond(finalScene3Scene);
 
+        waitBeforeBeesGoOut.setFirst(eatAndRest);
+        waitBeforeBeesGoOut.setSecond(bringHoneyToBear);
+
+        bringHoneyToBear.setFirst(finalScene2Scene);
+        bringHoneyToBear.setSecond(finalSceneScene);
+
 
         codeScene.put(firstSceneCode.getSceneCode(), firstSceneCode);
         codeScene.put(goToSearchCode.getSceneCode(), goToSearchCode);
         codeScene.put(askAboutSquirrelToDwellersScene.getSceneCode(), askAboutSquirrelToDwellersScene);
         codeScene.put(askAboutSquirrelToDwellersScene.getSceneCode(), askAboutSquirrelToDwellersScene);
         codeScene.put(askToWolf.getSceneCode(),askToWolf);
-
-
+        codeScene.put(goToDeepForest.getSceneCode(),goToDeepForest);
         codeScene.put(askOwlAboutSquirrel.getSceneCode(), goToDeepForest);
         codeScene.put(askOwlAboutSquirrel.getSceneCode(),askOwlAboutSquirrel);
-
-
-
-
         codeScene.put(getHoney.getSceneCode(), waitBeforeBeesGoOut);
-        codeScene.put(getHoney.getSceneCode(), finalScene3Scene);
+        codeScene.put(getHoney.getSceneCode(), getHoney);
+        codeScene.put(waitBeforeBeesGoOut.getSceneCode(),waitBeforeBeesGoOut);
+        codeScene.put(waitBeforeBeesGoOut.getSceneCode(), bringHoneyToBear);
+        codeScene.put(bringHoneyToBear.getSceneCode(),bringHoneyToBear);
+        codeScene.put(bringHoneyToBear.getSceneCode(), goToDeepForest);
+
+
 
 
 
@@ -200,6 +227,8 @@ public class Scenes {
     public static Scenes getScenesByCode(String sceneCode) {
         return getScenes().get(sceneCode);
     }
+
+
 
 }
 

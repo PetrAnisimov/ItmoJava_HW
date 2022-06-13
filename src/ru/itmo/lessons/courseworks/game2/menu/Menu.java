@@ -4,6 +4,8 @@ import ru.itmo.lessons.courseworks.game2.menu.commandsMenu.ExitGame;
 import ru.itmo.lessons.courseworks.game2.menu.commandsMenu.LoadGame;
 import ru.itmo.lessons.courseworks.game2.menu.commandsMenu.SaveCommand;
 
+import java.io.FileNotFoundException;
+
 public class Menu {
     Command start;
     Command load;
@@ -16,10 +18,10 @@ public class Menu {
         this.exit = exitGame;
     }
 
-    public Menu(Command start, Command load, Command save, Command exit) {
+    public Menu(Command start, Command load, Command exit) {
         this.start = start;
         this.load = load;
-        this.save = save;
+
         this.exit = exit;
     }
 
@@ -27,19 +29,19 @@ public class Menu {
         this.exit = exit;
     }
 
-    public void startGame(){
+    public void startGame() {
         start.execute();
     }
 
-    public void loadGame(){
+    public void loadGame()  {
         load.execute();
     }
 
-    public void saveGame(){
+    public void saveGame()  {
         save.execute();
     }
 
-    public void exitGame(){
+    public void exitGame()  {
         exit.execute();
     }
 }

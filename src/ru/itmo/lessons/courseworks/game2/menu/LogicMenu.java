@@ -5,9 +5,11 @@ import ru.itmo.lessons.courseworks.game2.menu.commandsMenu.LoadGame;
 import ru.itmo.lessons.courseworks.game2.menu.commandsMenu.SaveCommand;
 import ru.itmo.lessons.courseworks.game2.menu.commandsMenu.StartCommand;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LogicMenu {
+
 
     public void firstMenu(){
         System.out.println("_______МЕНЮ_______\n1. Начать игру\n" +
@@ -15,7 +17,15 @@ public class LogicMenu {
                 "3. Выйти\nВыберите пукнт меню: ");
     }
 
-    public void secondMenu(){
+    public void checkValueforFirstMenu(int num)  {
+        if (num > 3 || num < 1) {
+            System.out.println("Введите корректно значение\n");
+            firstMenu();
+            commandForFirstMenu();
+        }
+    }
+
+    public void secondMenu() {
         System.out.println("_______МЕНЮ_______\n" +
                 "1. Сохранить игру\n" +
                 "2. Загрузить игру\n" +
@@ -24,39 +34,32 @@ public class LogicMenu {
 
     }
 
-    public void checkValue(int num){
-        if (num > 3 || num < 1) {
+    public void checkValueForSecondMenu(int num)  {
+        if (num > 3 || num < 1)  {
             System.out.println("Введите корректно значение\n");
-            firstMenu();
+            secondMenu();
             commandForFirstMenu();
         }
     }
 
-    public void commandForFirstMenu(){
+    public void commandForFirstMenu()  {
         JobMenu menu = new JobMenu();
         Menu startMenu = new Menu(
                 new StartCommand(menu),
-                new SaveCommand(menu),
                 new LoadGame(menu),
                 new ExitGame(menu)
         );
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
-        checkValue(num);
-        switch (num){
-            case 1:
-                startMenu.startGame();
-                break;
-            case 2:
-                startMenu.loadGame();
-                break;
-            case 3:
-                startMenu.exitGame();
-                break;
+        checkValueforFirstMenu(num);
+        switch (num) {
+            case 1 -> startMenu.startGame();
+            case 2 -> startMenu.loadGame();
+            case 3 -> startMenu.exitGame();
         }
     }
 
-    public void commandForSecondMenu() {
+    public void commandForSecondMenu()  {
         JobMenu menu = new JobMenu();
         Menu startMenu = new Menu(
                 new SaveCommand(menu),
@@ -65,7 +68,7 @@ public class LogicMenu {
         );
         Scanner scanner = new Scanner(System.in);
         int num = scanner.nextInt();
-        checkValue(num);
+        checkValueForSecondMenu(num);
         switch (num) {
             case 1:
                 startMenu.saveGame();

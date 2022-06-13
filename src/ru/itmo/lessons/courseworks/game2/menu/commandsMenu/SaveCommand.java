@@ -1,6 +1,5 @@
 package ru.itmo.lessons.courseworks.game2.menu.commandsMenu;
 
-
 import ru.itmo.lessons.courseworks.game2.menu.Command;
 import ru.itmo.lessons.courseworks.game2.menu.JobMenu;
 
@@ -12,7 +11,7 @@ public class SaveCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute()  {
         menu.saveGame();
 
     }
